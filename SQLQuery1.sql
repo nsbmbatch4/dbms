@@ -93,3 +93,53 @@ status varchar(1) NOT NULL,
 type varchar(1) NOT NULL,
 department_id int NOT NULL
 )
+
+
+CREATE TABLE treatement(
+record_id int NOT NULL IDENTITY(1,1),
+date_of_checkup date NOT NULL,
+diagnosis varchar(500) NOT NULL,
+status varchar(100) NOT NULL,
+treatment varchar(1000) NOT NULL,
+doctor_id int NOT NULL,
+patient_id int NOT NULL
+)
+
+CREATE TABLE admitted(
+record_id int NOT NULL IDENTITY(1,1),
+patient_id varchar NOT NULL,
+department_id int NOT NULL,
+treatment_id int NOT NULL,
+room_id int NOT NULL,
+date date NOT NULL,
+advance_payment money NOT NULL,
+payment_method varchar(15) NOT NULL,
+time time NOT NULL,
+)
+
+
+CREATE TABLE discharged(
+record_id int NOT NULL IDENTITY(1,1),
+admit_id int NOT NULL,
+treatment_invoice varchar(10) NOT NULL,
+payment_made money NOT NULL,
+payment_date date NOT NULL,
+treatment_id int NOT NULL,
+)
+
+CREATE TABLE issued_drug(
+record_id int NOT NULL IDENTITY(1,1),
+drug_id int NOT NULL,
+quantity int NOT NULL,
+total_price money NOT NULL,
+treatment_id int NOT NULL,
+)
+
+CREATE TABLE drug (
+drug_id int NOT NULL IDENTITY(1,1),
+name varchar(50) NOT NULL,
+discription varchar(100) NOT NULL,
+unit_price money NOT NULL,
+
+)
+
